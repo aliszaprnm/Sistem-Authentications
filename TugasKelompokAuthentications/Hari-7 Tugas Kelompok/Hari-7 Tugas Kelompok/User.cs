@@ -1,4 +1,4 @@
-﻿namespace TugasKelompok
+﻿namespace Hari_7_Tugas_Kelompok
 {
     public class User
     {

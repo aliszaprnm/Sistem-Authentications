@@ -2,7 +2,13 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace TugasKelompok
+//Anggota Kelompok :
+//Afif
+//Lisza
+//Syauqi
+
+
+namespace Hari_7_Tugas_Kelompok
 { 
 
     public class Program
@@ -55,40 +61,32 @@ namespace TugasKelompok
                             //exit = 1;
                             Console.Clear();
                             break;
-                        default:
-                            Console.WriteLine("Aksi yang anda input salah, silakan masukkan angka 1-5. Tekan enter untuk melanjutkan. ");
-                            Console.ReadKey();
-                            break;
                     }
                 }
                 while (exit == 0);
             }
             catch (FormatException)
             {
+
+                Console.WriteLine("\n=============================");
                 Console.Write("Masukan Input Not Valid");
                 Console.ReadKey();
                 MenuUtama(listUser);
             }
+
             catch (IndexOutOfRangeException)
             {
-                Console.Write("Mohon Masukan ID yang Benar");
+                Console.Write(" Mohon Masukan ID yang Benar");
                 Console.ReadKey();
                 MenuUtama(listUser);
             }
             catch (ArgumentOutOfRangeException)
             {
+                Console.WriteLine("\n=============================");
                 Console.Write("\nMohon Masukan Data dengan Benar");
                 Console.ReadKey();
                 MenuUtama(listUser);
             }
-
-            catch (BCrypt.Net.SaltParseException)
-            {
-                Console.Write("Mohon Masukan Data dengan Benar");
-                Console.ReadKey();
-                MenuUtama(listUser);
-            }
-
         }
 
         static void CreateUser(List<User> listUser)
@@ -176,23 +174,27 @@ namespace TugasKelompok
             Console.Write("Username : ");
             string userName = Console.ReadLine();
             bool exist = listUser.Exists(item => item.uname == userName);
+
             if (exist)
             {
                 string namDep = listUser.Find(user => user.uname.Contains(userName)).namaDepan;
                 string namBel = listUser.Find(user => user.uname.Contains(userName)).namaBelakang;
                 Console.WriteLine("=============================");
-                Console.WriteLine("Username Sudah Terdaftar");
+                Console.WriteLine("Username Anda Sudah Terdaftar");
                 Console.WriteLine($"Dengan Nama : {namDep} {namBel}");
                 Console.WriteLine("=============================");
                 Console.ReadKey();
             }
+
             else
             {
                 Console.WriteLine("=============================");
-                Console.WriteLine("Username Belum Terdaftar");
+                Console.WriteLine("Username Anda Belum Terdaftar");
                 Console.ReadKey();
             }
+                   
             Console.ReadKey();
+
         }
 
         static void Login(List<User> listUser)
@@ -214,7 +216,7 @@ namespace TugasKelompok
 
                 if (key == ConsoleKey.Backspace && pass.Length > 0)
                 {
-                    Console.WriteLine("\b \b \n");
+                    Console.Write("\b \b");
                     pass = pass[0..^1];
                 }
                 else if (!char.IsControl(keyInfo.KeyChar))
@@ -225,40 +227,44 @@ namespace TugasKelompok
             } 
             while (key != ConsoleKey.Enter);
 
-                   
-            bool passBenar = BCrypt.Net.BCrypt.Verify(pass, listUser[listUser.FindIndex(user => (user.uname == userName))].pass);
-    
-            Console.ReadKey();
-            if (passBenar)
-            {
-                int index = listUser.FindIndex(user => (user.uname == userName));
-                if (listUser[index].admin)
-                {
-                    Console.WriteLine("=============================");
-                    Console.WriteLine("Selamat datang Admin");
-                    AdminLoggedIn(listUser, userName);
-                    Console.ReadKey();
-                }
+            bool exist = listUser.Exists(item => item.uname == userName);
 
-                Console.WriteLine("=============================");
-                Console.WriteLine("Berhasil Login");
-                LoggedIn(listUser, userName);
+            if (exist)
+            {
+                bool passBenar = BCrypt.Net.BCrypt.Verify(pass, listUser[listUser.FindIndex(user => user.uname == userName)].pass);
+
+                if (passBenar) 
+                {
+                    int index = listUser.FindIndex(user => (user.uname == userName));
+                    if (listUser[index].admin)
+                    {
+                        Console.WriteLine("\n=============================");
+                        Console.WriteLine($"Selamat datang Admin : {userName}");
+                        Console.ReadKey();
+                        AdminLoggedIn(listUser, userName);                      
+                    }
+
+                    Console.WriteLine("\n=============================");
+                    Console.WriteLine($"Selamat Datang {userName}");
+                    Console.ReadKey();
+                    LoggedIn(listUser, userName);                    
+                }
+                else 
+                {
+                    Console.WriteLine("\n=============================");
+                    Console.WriteLine("Gagal Login: Password yang Anda masukkan salah");
+                    Console.ReadKey();
+                }               
+            }
+
+            else            
+            {
+                Console.WriteLine("\n=============================");
+                Console.WriteLine("Gagal Login: Username tidak terdaftar");
                 Console.ReadKey();
             }
-            else if ( passBenar == false)
-            {
-                Console.WriteLine("=============================");
-                Console.WriteLine("Gagal Login: Password yang Anda masukkan salah");              
-                Console.ReadKey();           
-            }
-            else if (listUser.Exists(item => item.uname != userName))
-            {
-                Console.WriteLine("=============================");
-                Console.WriteLine("Gagal Login: Username tidak terdaftar");
-                Console.ReadKey();           
-            }
 
-        }
+         }
 
         static void LoggedIn(List<User> listUser, string userName)
         {
@@ -314,6 +320,7 @@ namespace TugasKelompok
                         LoggedIn(listUser, userName);
                     }
                     break;
+
                 case 2:
                     Console.Clear();
                     Console.WriteLine("==============================");
@@ -324,27 +331,24 @@ namespace TugasKelompok
                     Console.Write("Konfirmasi Password\t: ");
                     string pass2 = Console.ReadLine();
 
-                    listUser[index].pass = pass1;
-
-                    // Add Regex
-                    Regex rgx = new Regex(@"^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=]).*$",
-                    RegexOptions.Compiled);
-
-                    // Find matches.
-                    var matches = rgx.IsMatch(pass2);
-
-                    try
+                    if (pass1 == pass2)
                     {
-                        if (pass1 == pass2 && matches)
+                        listUser[index].pass = pass1;
+                        // Add Regex
+                        Regex rgx = new Regex(@"^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=]).*$",
+                        RegexOptions.Compiled);
+
+                        // Find matches.
+                        var matches = rgx.IsMatch(pass2);
+                        if (matches)
                         {
                             listUser[index].pass = pass2;
-                            Console.WriteLine("==============================");
+                            Console.WriteLine("\n==============================");
                             Console.Write("Password Berhasil Diganti");
                             Console.ReadKey();
                             LoggedIn(listUser, userName);
                         }
-
-                        else
+                        else 
                         {
                             GagalGantiPass();
                             Console.ReadKey();
@@ -352,14 +356,17 @@ namespace TugasKelompok
                             LoggedIn(listUser, userName);
                         }
                     }
-                    catch (ArgumentOutOfRangeException)
+                    else
                     {
+                        Console.WriteLine("\n==============================");
+                        Console.Write("Password Gagal Diganti: Password yang dimasukkan tidak cocok");
                         GagalGantiPass();
                         Console.ReadKey();
                         Console.Clear();
                         LoggedIn(listUser, userName);
-                    }
+                    }                   
                     break;
+
                 case 3:
                     Console.Clear();
                     Console.WriteLine("==================================");
@@ -378,7 +385,7 @@ namespace TugasKelompok
                             Console.ReadKey();
                             MenuUtama(listUser);
                         }
-                        else 
+                        else
                         {
                             Console.Write("\nUser gagal terhapus");
                             Console.ReadKey();
@@ -473,21 +480,19 @@ namespace TugasKelompok
                     Console.Write("Konfirmasi Password\t: ");
                     string pass2 = Console.ReadLine();
 
-                    listUser[index].pass = pass1;
-
-                    // Add Regex
-                    Regex rgx = new Regex(@"^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=]).*$",
-                    RegexOptions.Compiled);
-
-                    // Find matches.
-                    var matches = rgx.IsMatch(pass2);
-
-                    try
+                    if (pass1 == pass2)
                     {
-                        if (pass1 == pass2 && matches)
+                        listUser[index].pass = pass1;
+                        // Add Regex
+                        Regex rgx = new Regex(@"^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=]).*$",
+                        RegexOptions.Compiled);
+
+                        // Find matches.
+                        var matches = rgx.IsMatch(pass2);
+                        if (matches)
                         {
                             listUser[index].pass = pass2;
-                            Console.WriteLine("==============================");
+                            Console.WriteLine("\n==============================");
                             Console.Write("Password Berhasil Diganti");
                             Console.ReadKey();
                             AdminLoggedIn(listUser, userName);
@@ -500,15 +505,17 @@ namespace TugasKelompok
                             AdminLoggedIn(listUser, userName);
                         }
                     }
-                    catch (ArgumentOutOfRangeException)
+                    else
                     {
-
+                        Console.WriteLine("\n==============================");
+                        Console.Write("Password Gagal Diganti: Password yang dimasukkan tidak cocok");
                         GagalGantiPass();
                         Console.ReadKey();
                         Console.Clear();
-                        LoggedIn(listUser, userName);
+                        AdminLoggedIn(listUser, userName);
                     }
                     break;
+
                 case 3:
                     Console.Clear();
                     Console.WriteLine("==================================");
@@ -535,6 +542,7 @@ namespace TugasKelompok
                         }
                     }
                     break;
+
                 case 4:
                     Console.Clear();
                     Console.WriteLine("==================================");
@@ -570,6 +578,7 @@ namespace TugasKelompok
                         AdminLoggedIn(listUser, userName);
                     }
                     break;
+
                 case 5:
                     MenuUtama(listUser);
                     break;
