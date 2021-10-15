@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "KVfVgiVigMrCnMZHBimjeJRe4mZLlZDR8d/Yseqb0OpdGaAkJQk47f6OfrsHytXR8JESlw0OEUWcNkxE8nhfuA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\nkhal\\Desktop\\Sistem-Authentications\\TugasKelompokAuthentications\\TugasKelompok\\TugasKelompok\\TugasKelompok.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nkhal\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512"
+  ],
+  "logs": []
+}

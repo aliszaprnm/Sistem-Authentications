@@ -1,0 +1,15 @@
+C:\Users\nkhal\Desktop\Sistem-Authentications\TugasKelompokAuthentications\TugasKelompok\TugasKelompok\bin\Debug\netcoreapp3.1\TugasKelompok.exe
+C:\Users\nkhal\Desktop\Sistem-Authentications\TugasKelompokAuthentications\TugasKelompok\TugasKelompok\bin\Debug\netcoreapp3.1\TugasKelompok.deps.json
+C:\Users\nkhal\Desktop\Sistem-Authentications\TugasKelompokAuthentications\TugasKelompok\TugasKelompok\bin\Debug\netcoreapp3.1\TugasKelompok.runtimeconfig.json
+C:\Users\nkhal\Desktop\Sistem-Authentications\TugasKelompokAuthentications\TugasKelompok\TugasKelompok\bin\Debug\netcoreapp3.1\TugasKelompok.runtimeconfig.dev.json
+C:\Users\nkhal\Desktop\Sistem-Authentications\TugasKelompokAuthentications\TugasKelompok\TugasKelompok\bin\Debug\netcoreapp3.1\TugasKelompok.dll
+C:\Users\nkhal\Desktop\Sistem-Authentications\TugasKelompokAuthentications\TugasKelompok\TugasKelompok\bin\Debug\netcoreapp3.1\TugasKelompok.pdb
+C:\Users\nkhal\Desktop\Sistem-Authentications\TugasKelompokAuthentications\TugasKelompok\TugasKelompok\bin\Debug\netcoreapp3.1\BCrypt.Net-Core.dll
+C:\Users\nkhal\Desktop\Sistem-Authentications\TugasKelompokAuthentications\TugasKelompok\TugasKelompok\obj\Debug\netcoreapp3.1\TugasKelompok.csproj.AssemblyReference.cache
+C:\Users\nkhal\Desktop\Sistem-Authentications\TugasKelompokAuthentications\TugasKelompok\TugasKelompok\obj\Debug\netcoreapp3.1\TugasKelompok.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nkhal\Desktop\Sistem-Authentications\TugasKelompokAuthentications\TugasKelompok\TugasKelompok\obj\Debug\netcoreapp3.1\TugasKelompok.AssemblyInfoInputs.cache
+C:\Users\nkhal\Desktop\Sistem-Authentications\TugasKelompokAuthentications\TugasKelompok\TugasKelompok\obj\Debug\netcoreapp3.1\TugasKelompok.AssemblyInfo.cs
+C:\Users\nkhal\Desktop\Sistem-Authentications\TugasKelompokAuthentications\TugasKelompok\TugasKelompok\obj\Debug\netcoreapp3.1\TugasKelompok.csproj.CoreCompileInputs.cache
+C:\Users\nkhal\Desktop\Sistem-Authentications\TugasKelompokAuthentications\TugasKelompok\TugasKelompok\obj\Debug\netcoreapp3.1\TugasKelompok.dll
+C:\Users\nkhal\Desktop\Sistem-Authentications\TugasKelompokAuthentications\TugasKelompok\TugasKelompok\obj\Debug\netcoreapp3.1\TugasKelompok.pdb
+C:\Users\nkhal\Desktop\Sistem-Authentications\TugasKelompokAuthentications\TugasKelompok\TugasKelompok\obj\Debug\netcoreapp3.1\TugasKelompok.genruntimeconfig.cache
