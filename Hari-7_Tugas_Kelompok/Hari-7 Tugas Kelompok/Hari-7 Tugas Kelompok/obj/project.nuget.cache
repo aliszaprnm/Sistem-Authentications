@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "98BsiqV2FJOeR8PAiZqzQe7/b8ctD6GX1cxNKoMtV0nQMpyTlbHAq9yMTPbo7RV9avwuND2vORFGS8WtTAMPvw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\nkhal\\Downloads\\Hari-7_Tugas_Kelompok (3)\\Hari-7 Tugas Kelompok\\Hari-7 Tugas Kelompok\\Hari-7 Tugas Kelompok.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nkhal\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512"
+  ],
+  "logs": []
+}
